@@ -43,10 +43,21 @@ public class Utilisateur extends Personne {
 	public void setRole(String role) {
 		this.role = role;
 	}
+	public void setDateCreation(String dateCreation) {
+		// TODO Auto-generated method stub
+		
+	}
+		
+	public void setIdAgencePers(String idAgence) {
+	}
 	public String toString() {
 		return "Utilisateur [email=" + email + ", login=" + login + ", password=" + password + ", role=" + role + "]";
 	}
 	
+		
+	
+	}
+	
 	
 
-}
+

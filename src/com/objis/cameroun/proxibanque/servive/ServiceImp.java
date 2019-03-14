@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.objis.cameroun.proxibanque.dao.DaoImpl;
 import com.objis.cameroun.proxibanque.dao.IDao;
+import com.objis.cameroun.proxibanque.domaine.Agence;
 import com.objis.cameroun.proxibanque.domaine.Client;
 import com.objis.cameroun.proxibanque.domaine.Role;
 import com.objis.cameroun.proxibanque.domaine.Utilisateur;
@@ -27,7 +28,10 @@ public class ServiceImp implements IService{
 	public int creerUtilisteurService(Utilisateur user) {
 		return dao.creerUtilisteurDao(user);
 	}
-
+	
+	public int creerAgenceService(Agence user) {
+		return dao.creerAgenceDao(user);
+	}
 	public int creerClientService(Client cli) {
 		// TODO Auto-generated method stub
 		return 0;
@@ -73,5 +77,12 @@ public class ServiceImp implements IService{
 	public List<Utilisateur> listeUtilisateursService() {
 		return dao.listeUtilisateursDao();
 	}
+	public List<Agence> listeAgencesService() {
+		return dao.listeAgencesDao();
+	}
 
+	public int creerAgenceService(Utilisateur user) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

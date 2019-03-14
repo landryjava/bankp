@@ -26,6 +26,7 @@ public interface IService {
 	public int authentifierService(String login, String passwd);
 	public String recupererRoleService(String login, String passwd);
 	public int modifierRoleUserService(String nom, String role);
+	public int creerAgenceService(Utilisateur user);
 	
 	
 	

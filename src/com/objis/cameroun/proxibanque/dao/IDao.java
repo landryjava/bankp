@@ -2,6 +2,7 @@ package com.objis.cameroun.proxibanque.dao;
 
 import java.util.List;
 
+import com.objis.cameroun.proxibanque.domaine.Agence;
 import com.objis.cameroun.proxibanque.domaine.Client;
 import com.objis.cameroun.proxibanque.domaine.Role;
 import com.objis.cameroun.proxibanque.domaine.Utilisateur;
@@ -28,6 +29,8 @@ public interface IDao {
 	public int authentifierDao(String login, String passwd);
 	public String recupererRoleDao(String login, String passwd);
 	public int modifierRoleUserDao(String nom, String role);
+	public List<Agence> listeAgencesDao();
+	public int creerAgenceDao(Agence user);
 	
 	
 

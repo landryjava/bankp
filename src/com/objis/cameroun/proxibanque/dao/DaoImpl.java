@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.objis.cameroun.proxibanque.domaine.Agence;
 import com.objis.cameroun.proxibanque.domaine.Client;
 import com.objis.cameroun.proxibanque.domaine.CompteBancaire;
 import com.objis.cameroun.proxibanque.domaine.Role;
@@ -301,6 +302,97 @@ public class DaoImpl implements IDao {
 			e.printStackTrace();
 		}
 		return maListe;
+	}
+	public int enregistrerAgenceDao(Agence agence) {
+
+		try {
+
+			// Etape 1 : récupération de la connexion
+			Connection cn = ConnectionMysqlDB.getInstance();
+
+			// Etape 2 : Création d'un objet  statement et preparation de la requete
+			
+
+			String sql = "insert into `agence`(`IdAgence`,`IdAgences`,`DateCreation`,`Employe`)values (?,?,?,?)";
+			
+			PreparedStatement ps=  cn.prepareStatement(sql);
+			ps.setInt(1, agence.getIdAgence());
+			ps.setString(2, agence.getIdAgences());
+			ps.setString(3, agence.getDateCreation());
+			ps.setString(4, agence.getEmploye());
+			
+			
+			// Etape 3 : exécution requête
+			ps.executeUpdate();
+			return 1;
+			
+			
+			// Etape 4 : gestion des exceptions et libération 'automatique' des ressources
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return 0;
+		}
+		
+	
+		
+	
+
+	}
+
+	
+	public List<Agence> listAgencesDao() {
+		
+
+        //Création d'une collection des reservations etudiant.
+		List<Agence> maListAgence= new ArrayList<Agence>();
+	
+		try {
+
+			// Etape 1 : récupération de la connexion
+			Connection cn = ConnectionMysqlDB.getInstance();
+
+			// Etape 2 : préparation requête
+			
+			String sql = "SELECT * FROM event ";
+			
+			Statement st = cn.createStatement();
+
+			
+
+			// Etape 3 : exécution requête
+			ResultSet rs = st.executeQuery(sql);
+
+			// Etape 4 :parcours Resultset (optionnel)
+			while (rs.next()) {
+				//recuperation des valeurs d'une ligne de la table reservation, pour initialiser dans un objet etudiant
+				Agence agence =  new Agence();
+				agence.setIdAgence(rs.getInt("idAgence"));
+				agence.setIdAgences(rs.getString("IdAgences"));
+				agence.setDateCreation(rs.getString("dateCreation"));
+				agence.setEmploye(rs.getString("Employe"));
+				
+				//ajout de reservations dans List maListEtudiant
+				maListAgence.add(agence); // cette instruction permet d'inserrerl'objet etudiant dans ma liste reservation
+				
+			}
+			
+			// Etape 5 : gestion des exceptions et libération 'automatique' des ressources
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} 
+		
+		return maListAgence;
+	}
+
+	public List<Agence> listeAgencesDao() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public int creerAgenceDao(Agence user) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
